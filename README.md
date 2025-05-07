@@ -1,16 +1,12 @@
-# countdown
+## _Countdown_
 
-A new Flutter project.
+A counter that can reset the remaining time or reset and send a new SMS.
 
-## Getting Started
+In this project Flutter it was reviewed the learning obtained by ADF (Flutter Academy) about the use of controllers and component control.
 
-This project is a starting point for a Flutter application.
+This project is basic without focusing on the layout, its appearance may be annoying, but it is only for didactic purposes.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+| dependencies | Version |
+| ------ | ------ |
+| Flutter | 3.29.0 |
+| Dart | 3.7.0 |
