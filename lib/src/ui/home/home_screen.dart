@@ -1,3 +1,4 @@
+import 'package:countdown/src/ui/core/countdown/countdown_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,11 +14,9 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               spacing: 10,
               children: [
-                Text(
-                  '00.30',
-                  style: TextStyle(
-                    fontSize: 30,
-                  ),
+                CountdownWidget(
+                  textStyle: TextStyle(fontSize: 30),
+                  duration: Duration(minutes: 2),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
