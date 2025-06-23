@@ -1,9 +1,38 @@
-import 'package:countdown/src/ui/core/countdown/countdown_widget.dart';
 import 'package:flutter/material.dart';
+import '../core/countdown/countdown.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+
 
   const HomeScreen({ super.key });
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
+  late final CountdownController countDownController;
+  var enableResendSMS = false;
+
+  @override
+  void initState() {
+    countDownController = CountdownController(
+      duration: Duration(seconds: 5), 
+      onEnd: () {
+        setState(() {
+          enableResendSMS = true;
+        });
+      }
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    countDownController.dispose();
+    super.dispose();
+  }
 
    @override
    Widget build(BuildContext context) {
@@ -15,15 +44,17 @@ class HomeScreen extends StatelessWidget {
               spacing: 10,
               children: [
                 CountdownWidget(
+                  controller: countDownController,
                   textStyle: TextStyle(fontSize: 30),
-                  duration: Duration(minutes: 2),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   spacing: 10,
                   children: [
                     ElevatedButton(
-                      onPressed: () {}, 
+                      onPressed: () {
+                        countDownController.restart();
+                      }, 
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)
@@ -34,7 +65,12 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: () {}, 
+                      onPressed: enableResendSMS ? () {
+                        setState(() {
+                          enableResendSMS = false;
+                          countDownController.restart();
+                        });
+                      } : null, 
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)
